@@ -493,14 +493,14 @@ def changeStatus(issueKey, action):
         return 1
     # TODO using defaults for resolution and timetracking but should
     # accept values from args too
-    resolution = '1'
-    timetracking = '1m'
+    # resolution = '1'
+    # timetracking = '1m'
     try:
-        return soap.service.progressWorkflowAction(auth, issueKey, actionId, [
-            {"id": "assignee", "values": [jira_env['jirauser']]},
-            {"id": "resolution", "values": [resolution]},
-            {"id": "timetracking", "values": [timetracking]},
-            ])
+        return soap.service.progressWorkflowAction(auth, issueKey, actionId, [{}])
+            # {"id": "assignee", "values": [issue['assignee']]}, # jira_env['jirauser']
+            # {"id": "resolution", "values": [resolution]},
+            # {"id": "timetracking", "values": [timetracking]},
+            # ])
     except Exception, e:
         logger.error(decode(e))
 
