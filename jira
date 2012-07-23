@@ -1536,7 +1536,7 @@ if (__name__ == "__main__"):
     parser.add_option("-v", "--verbose", dest="loglevel", type="int",
                       default=logging.INFO,
                       help="Verbosity, default: %default, debug is " + str(logging.DEBUG))
-    parser.add_option("-s", "--server", dest="server", default="http://jira.example.com:80",
+    parser.add_option("-s", "--server", dest="server", default="https://issues.scala-lang.org",
                       help="JIRA server and port to use, default: %default")
 #    parser.add_option("-p", "--project", dest="project", default="CA",
 #                      help="Project to use, default: %default")
@@ -1548,6 +1548,7 @@ if (__name__ == "__main__"):
 
     logger = setupLogging(options.loglevel)
     jira_env = {}
+    project = "SI"
     server = options.server + "/rpc/soap/jirasoapservice-v2?wsdl"
     #server = options.server + "/rpc/soap/sharedspace-s1v1?wsdl"
     if not server.startswith('http'):  # also catches https
